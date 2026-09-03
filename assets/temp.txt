@@ -1,0 +1,151 @@
+<!-- STORIES -->
+    <section class="stories">
+        <h2>Recipe Stories</h2>
+        
+        <div class="stories-container">
+            <div class="main-story">
+                <span class="location">ITALY • EMILIA-ROMAGNA</span>
+                <h3>The Pasta My Grandmother Made Every Sunday</h3>
+                <blockquote>"She never measured anything..."</blockquote>
+                <p>- Elena Ricci, Bologna</p>
+            </div>
+
+            <div class="story-list">
+                <div class="story-item">My Mother's Miso Soup</div>
+                <div class="story-item">Grandpa's Jollof Secret</div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- CTA + FEET -->
+    <section class="cta-banner">
+        <h2>Your recipe deserves to be remembered.</h2>
+            <p>Share the recipes that have shaped your family...</p>
+        <button class="secondary-btn">Learn More</button>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-brand">
+            <h3>FORKLORE</h3>
+            <p>A global community cookbook...</p>
+        </div>
+        <div class="footer-links">
+            <div>
+                <h4>DISCOVER</h4>
+                <a href="#">Explore Recipes</a>
+                <a href="#">By Cuisine</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+/* --- Stories Section --- */
+.stories {
+    padding: 50px 14%;
+    background: #f7f1e5;
+}
+
+.stories h2 {
+    font-family: Garamond, serif;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.stories-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.main-story {
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+}
+
+.location {
+    font-size: 11px;
+    font-weight: bold;
+    color: #d3541b;
+    letter-spacing: 1px;
+}
+
+.main-story h3 {
+    font-family: Garamond, serif;
+    font-size: 24px;
+    margin: 15px 0;
+}
+
+.main-story blockquote {
+    font-style: italic;
+    color: #5c5346;
+    margin: 0 0 15px 0;
+    line-height: 1.6;
+}
+
+.story-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.story-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* --- CTA Banner & Footer --- */
+.cta-banner {
+    background: #17120d;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.cta-banner h2 {
+    font-family: Garamond, serif;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.cta-banner p {
+    color: #b5a999;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.secondary-btn {
+    background: white;
+    color: #17120d;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.footer {
+    background: #0f0b08;
+    color: #b5a999;
+    padding: 50px 14%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-brand h3 {
+    color: white;
+    font-family: Garamond, serif;
+    margin: 0 0 10px 0;
+}
+
+.footer-brand p {
+    font-size: 13px;
+    max-width: 300px;
+    line-height: 1.5;
+}
