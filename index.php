@@ -1,5 +1,7 @@
 <?php
 session_start();
+$page_title = "Forklore - Home";
+require_once 'includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,39 +9,9 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ForkLore - Global Community Cookbook</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/home.css">
 </head>
 <body>
-
-    <!-- Header Navigation -->
-    <header class="header">
-        <a href="index.php" class="logo">
-            <img src="assets/LOGO.png" alt="ForkLore Logo" class="logo-img">
-            <b>FORKLORE</b>
-        </a>
-        <nav>
-            <a href="index.php">Home</a>
-            <a href="recipes.php">Explore Recipes</a>
-            <a href="cuisines.php">Cuisines</a>
-            <a href="stories.php">Stories</a>
-            <a href="community.php">Community</a>
-        </nav>
-
-        <!-- Dynamic Auth Navigation -->
-        <?php if (isset($_SESSION['user_id'])): ?>
-            <div class="user-profile-nav">
-                <a href="profile.php" class="profile-badge">
-                    👤 <?= htmlspecialchars($_SESSION['username'] ?? 'Profile') ?>
-                </a>
-                <a href="logout.php" class="logout-link">Logout</a>
-            </div>
-        <?php else: ?>
-            <div class="auth-btn-group">
-                <a href="auth/login.php" class="login-nav-btn">Login</a>
-                <a href="auth/register.php" class="register-nav-btn">Register</a>
-            </div>
-        <?php endif; ?>
-    </header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -197,52 +169,9 @@ session_start();
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <h3>FORKLORE</h3>
-                <p>A global community cookbook where every recipe carries a story. Discover, share, and preserve culinary traditions from across generations and cultures.</p>
-            </div>
-            
-            <div class="footer-col">
-                <h4>DISCOVER</h4>
-                <ul>
-                    <li><a href="recipes.php">Explore Recipes</a></li>
-                    <li><a href="cuisines.php">By Cuisine</a></li>
-                    <li><a href="#">By Season</a></li>
-                    <li><a href="#">Most Saved</a></li>
-                    <li><a href="#">New This Week</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>COMMUNITY</h4>
-                <ul>
-                    <li><a href="share.php">Share a Recipe</a></li>
-                    <li><a href="stories.php">Recipe Stories</a></li>
-                    <li><a href="#">Collections</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>ABOUT</h4>
-                <ul>
-                    <li><a href="about.php">Our Mission</a></li>
-                    <li><a href="#">Contributors</a></li>
-                    <li><a href="#">Newsletter</a></li>
-                    <li><a href="#">Press</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Use</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2026 Forklore. Recipes with roots, shared with love.</p>
-        </div>
-    </footer>
-
 </body>
 </html>
+
+<?php
+require_once 'includes/footer.php';
+?>

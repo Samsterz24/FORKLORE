@@ -7,7 +7,7 @@ A web platform prototype designed for sharing, preserving, and exploring family 
 ## 📌 Project Overview
 ForkLore serves as a digital archive where users can discover traditional recipes, explore dishes by region/cuisine, and submit their own culinary heritage. 
 
-* **Status:** Version 1.0.1 (Database setup and connect)
+* **Status:** Version 1.0.1 (separation of css files, seaparate files for header and footer)
 * **Target Audience:** Food enthusiasts, home cooks, and cultural storytellers.
 
 ---
@@ -17,3 +17,10 @@ ForkLore serves as a digital archive where users can discover traditional recipe
 * **Frontend:** HTML5, Custom CSS3 (Flexbox & CSS Grid)
 * **Backend Runtime:** PHP (Local server / XAMPP)
 * **Assets & Design:** Adobe Illustrator / Photoshop
+
+## 🗄️ Database Setup
+
+ForkLore uses MariaDB/MySQL for data persistence.
+
+1. Ensure Apache and MySQL are running in XAMPP.
+2. Run the setup script in your browser: http://localhost/forklore/DB/setup.php
