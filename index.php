@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +24,21 @@
             <a href="stories.php">Stories</a>
             <a href="community.php">Community</a>
         </nav>
-        <a href="share.php" class="share-btn">+ Share a Recipe</a>
+
+        <!-- Dynamic Auth Navigation -->
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <div class="user-profile-nav">
+                <a href="profile.php" class="profile-badge">
+                    👤 <?= htmlspecialchars($_SESSION['username'] ?? 'Profile') ?>
+                </a>
+                <a href="logout.php" class="logout-link">Logout</a>
+            </div>
+        <?php else: ?>
+            <div class="auth-btn-group">
+                <a href="auth/login.php" class="login-nav-btn">Login</a>
+                <a href="auth/register.php" class="register-nav-btn">Register</a>
+            </div>
+        <?php endif; ?>
     </header>
 
     <!-- Hero Section -->
