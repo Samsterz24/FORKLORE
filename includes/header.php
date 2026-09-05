@@ -35,7 +35,7 @@
                     <a href="profile.php" class="profile-badge">
                         👤 <?= htmlspecialchars($_SESSION['username'] ?? 'Profile') ?>
                     </a>
-                    <a href="logout.php" class="logout-link">Logout</a>
+                    <a href="auth/logout.php" class="btn-logout">Logout</a>                
                 </div>
             <?php else: ?>
                 <div class="auth-btn-group">
