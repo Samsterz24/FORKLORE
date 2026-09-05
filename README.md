@@ -7,7 +7,7 @@ A web platform prototype designed for sharing, preserving, and exploring family 
 ## 📌 Project Overview
 ForkLore serves as a digital archive where users can discover traditional recipes, explore dishes by region/cuisine, and submit their own culinary heritage. 
 
-* **Status:** Version 1.0.1 (separation of css files, separate files for header and footer)
+* **Status:** Version 1.0.2 (auth logic and ui complete)
 * **Target Audience:** Food enthusiasts, home cooks, and cultural storytellers.
 
 ---
