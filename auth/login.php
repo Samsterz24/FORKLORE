@@ -6,7 +6,7 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
-    $password = trim($_POST['password'] ?? '');
+    $password = ($_POST['password'] ?? '');
 
     if (empty($username) || empty($password)) {
         $error = "Please fill in all fields.";
@@ -49,7 +49,7 @@ require_once '../includes/header.php';
                 </p>
             <?php endif; ?>
 
-            <form action="login.php" method="POST" class="auth-form">
+            <form action="/FORKLORE/auth/login.php" method="POST" class="auth-form">
                 <div class="form-group">
                     <label for="username">Username or Email</label>
                     <input type="text" name="username" id="username" value="<?= htmlspecialchars($username ?? '') ?>" required>

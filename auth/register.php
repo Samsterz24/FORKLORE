@@ -3,7 +3,7 @@ session_start();
 require_once '../DB/db.php';
 
 if (isset($_SESSION['id'])) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 }//if naka login na
 
@@ -51,51 +51,82 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+$page_title = "Rgister - Forklore";
+require_once '../includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register - ForkLore</title>
-    <link rel="stylesheet" href="styles/style.css">
-</head>
-<body>
-    <main class="auth-container">
+<main class="auth-container">
+    <div class="auth-card">
         <h2>Join ForkLore</h2>
 
+        <p class="auth-subtitle">
+            Create an account to share your recipes and stories.
+        </p>
+
         <?php if (!empty($error)): ?>
-            <p class="error-msg" style="color: red;"><?= htmlspecialchars($error) ?></p>
+            <p class="error-msg" style="color: red;">
+                <?= htmlspecialchars($error) ?>
+            </p>
         <?php endif; ?>
 
         <?php if (!empty($success)): ?>
-            <p class="success-msg" style="color: green;"><?= $success ?></p>
+            <p class="success-msg" style="color: green;">
+                <?= $success ?>
+            </p>
         <?php endif; ?>
 
-        <form action="register.php" method="POST">
+        <form action="register.php" method="POST" class="auth-form">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" value="<?= htmlspecialchars($_POST['username'] ?? '') ?>" required>
+                <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"
+                    required
+                >
             </div>
 
             <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
+                    required
+                >
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" required>
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    required
+                >
             </div>
 
             <div class="form-group">
                 <label for="confirm_password">Confirm Password</label>
-                <input type="password" name="confirm_password" id="confirm_password" required>
+                <input
+                    type="password"
+                    name="confirm_password"
+                    id="confirm_password"
+                    required
+                >
             </div>
 
-            <button type="submit" class="btn">Register</button>
+            <button type="submit" class="primary-btn auth-submit-btn">
+                Register
+            </button>
         </form>
 
-        <p>Already have an account? <a href="login.php">Login here</a>.</p>
-    </main>
-</body>
-</html>
+        <p class="auth-footer-text">
+            Already have an account?
+            <a href="login.php">Login here</a>
+        </p>
+    </div>
+</main>
+
+<?php require_once '../includes/footer.php'; ?>

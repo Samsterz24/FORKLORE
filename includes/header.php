@@ -11,22 +11,23 @@
         <title><?= $page_title ?? 'ForkLore - Global Community Cookbook' ?></title>
         
         <!-- Global CSS -->
-        <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="/FORKLORE/styles/main.css">
+        <link rel="stylesheet" href="/FORKLORE/styles/auth.css">
     </head>
 
     <body>
 
         <header class="header">
-            <a href="index.php" class="logo">
-                <img src="assets/LOGO.png" alt="ForkLore Logo" class="logo-img">
+            <a href="/FORKLORE/index.php" class="logo">
+                <img src="/FORKLORE/assets/LOGO.png" alt="ForkLore Logo" class="logo-img">
                 <b>FORKLORE</b>
             </a>
             <nav>
-                <a href="index.php">Home</a>
-                <a href="recipes.php">Explore Recipes</a>
-                <a href="cuisines.php">Cuisines</a>
-                <a href="stories.php">Stories</a>
-                <a href="community.php">Community</a>
+                <a href="/FORKLORE/index.php">Home</a>
+                <a href="/FORKLORE/recipes.php">Explore Recipes</a>
+                <a href="/FORKLORE/cuisines.php">Cuisines</a>
+                <a href="/FORKLORE/stories.php">Stories</a>
+                <a href="/FORKLORE/community.php">Community</a>
             </nav>
 
             <!-- Dynamic Auth Navigation -->
@@ -35,14 +36,12 @@
                     <a href="profile.php" class="profile-badge">
                         👤 <?= htmlspecialchars($_SESSION['username'] ?? 'Profile') ?>
                     </a>
-                    <a href="auth/logout.php" class="btn-logout">Logout</a>                
+                    <a href="auth/logout.php" class="logout-link">Logout</a>                
                 </div>
             <?php else: ?>
                 <div class="auth-btn-group">
-                    <a href="auth/login.php" class="login-nav-btn">Login</a>
-                    <a href="auth/register.php" class="register-nav-btn">Register</a>
+                    <a href="/FORKLORE/auth/login.php" class="login-nav-btn">Login</a>
+                    <a href="/FORKLORE/auth/register.php" class="register-nav-btn">Register</a>
                 </div>
             <?php endif; ?>
         </header>
-    </body>
-</html>

@@ -3,18 +3,6 @@
         session_start();
     }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?= $page_title ?? 'ForkLore - Global Community Cookbook' ?></title>
-        
-        <!-- Global CSS -->
-        <link rel="stylesheet" href="styles/main.css">
-    </head>
-
-    <body>
         <footer class="footer">
             <div class="footer-grid">
                 <div class="footer-brand">
@@ -61,5 +49,3 @@
                 <p>&copy; 2026 Forklore. Recipes with roots, shared with love.</p>
             </div>
         </footer>
-    </body>
-</html>
