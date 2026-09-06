@@ -3,13 +3,20 @@ $host = "localhost";
 $user = "root";
 $password = "";
 $database = "FORKLORE";
+$charset = "utf8mb4";
 
-$conn = new mysqli($host, $user, $password, $database);
+$dsn = "mysql:host=$host;dbname=$database;charset=$charset";
 
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
 
-if ($conn->connect_error) {
-    die("Database Connection Failed: " . $conn->connect_error);
+try{
+    $pdo = new PDO($dsn, $user, $password, $options);
 }
-
-$conn->set_charset("utf8mb4");
+catch (PDOException $e){
+    die("Database connection failed, tarunga bih." . $e->getMessage());
+}
 ?>
