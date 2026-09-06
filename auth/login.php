@@ -5,35 +5,29 @@ require_once '../DB/db.php';
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username'] ?? '');
-    $password = ($_POST['password'] ?? '');
+    $username   = trim($_POST['username'] ?? '');
+    $password   = ($_POST['password'] ?? '');
 
     if (empty($username) || empty($password)) {
-        $error = "Please fill in all fields.";
+        $error  = "Please fill in all fields.";
     } else {
 
-    $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ? OR email = ?");
-        $stmt->bind_param("ss", $username, $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    $stmt = $pdo->prepare("SELECT id, username, password FROM users WHERE username = ? OR email = ?");
+        $stmt->execute([$username, $username]);
+        $user = $stmt->fetch();
 
-        if ($user = $result->fetch_assoc()) {
+        if ($user && password_verify($password, $user['password'])) {
             // Verify hashed password
-            if (password_verify($password, $user['password'])) {
-                $_SESSION['id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
+                $_SESSION['id']         = $user['id'];
+                $_SESSION['username']   = $user['username'];
                 
                 header("Location: ../index.php");
                 exit;
             } else {
                 $error = "Invalid username or password.";
             }
-        } else {
-            $error = "Invalid username or password.";
         }
-        $stmt->close();
     }
-}
 $page_title = "Login - Forklore";
 require_once '../includes/header.php';
 ?>

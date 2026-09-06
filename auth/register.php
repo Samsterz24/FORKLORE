@@ -11,9 +11,9 @@ $error = '';
 $success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username'] ?? '');
-    $email    = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
+    $username         = trim($_POST['username'] ?? '');
+    $email            = trim($_POST['email'] ?? '');
+    $password         = $_POST['password'] ?? '';
     $confirm_password = $_POST['confirm_password'] ?? '';
 
     // Basic Validation
@@ -27,27 +27,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Password must be at least 6 characters long.";
     } else {
         // exist or noh
-        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
-        $stmt->bind_param("ss", $username, $email);
-        $stmt->execute();
-        $stmt->store_result();
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE username = :username OR email = :email");
+        $stmt->execute(
+            ['username'=> $username,
+             'email'   =>$email]);
 
-        if ($stmt->num_rows > 0) {
+        if ($stmt->fetch()) {
             $error = "Username or Email is already registered.";
         } else {
-            $stmt->close();
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-            $password = password_hash($password, PASSWORD_DEFAULT);
+            $insert_stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
+            $registered = $insert_stmt->execute(
+                ['username' => $username,
+                 'email'    => $email,
+                 'password' => $hashed_password]);
 
-            $insert_stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-            $insert_stmt->bind_param("sss", $username, $email, $password);
-
-            if ($insert_stmt->execute()) {
-                $success = "Account created successfully! You can now <a href='login.php'>login</a>.";
+            if ($registered) {
+                $_SESSION['success'] = "Account created successfully! You can now <a href='login.php'>login</a>.";
             } else {
                 $error = "Something went wrong. Please try again.";
             }
-            $insert_stmt->close();
         }
     }
 }
